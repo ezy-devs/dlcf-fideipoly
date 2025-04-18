@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Jquery -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    
+
+
+    <!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    {% block navbar %}
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="{% url 'events_list' %}">Events</a></li>
+            <li><a href="{% url 'users_list' %}">Users</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </div>
+    {% endblock %}
+{% block content %}
+<div class="main-content">
+        <header>
+            <h1 class="fade-in">Welcome to Your Dashboard</h1>
+        </header>
+        
+        <section class="cards">
+            <div class="card fade-in">
+                <h3>Total Sales</h3>
+                <p>$15,300</p>
+            </div>
+            <div class="card fade-in">
+                <h3>New Users</h3>
+                <p>1,200</p>
+            </div>
+            <div class="card fade-in">
+                <h3>Active Sessions</h3>
+                <p>320</p>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+    
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+</html>

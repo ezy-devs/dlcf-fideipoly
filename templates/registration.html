@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <section class="register py-5">
+        <div class="container">
+            <div class="bg-light p-5">
+                <div class="row">
+                    <div class="col-md-6 fade-in">
+                        <h3 class="text-center">Why Membership?</h3>
+                        <div class="card-body text-white">
+                            <p class="card-txt text-secondary">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, at! Accusantium, sunt
+                                modi unde in quia cum nam aliquid nihil dignissimos, ratione animi excepturi
+                                suscipit ipsam voluptatum debitis minima sed!
+                            </p>
+                            <h5 class="title">Benefits of Membership</h5>
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet.</li>
+                                <li>Lorem ipsum dolor sit amet.</li>
+                                <li>Lorem ipsum dolor sit amet.</li>
+                                <li>Lorem ipsum dolor sit amet.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <h2 class="text-center card-title">Register as a Member</h2>
+                            {% if messages %}
+                                <div class="alert alert-info">
+                                    {% for message in messages %}
+                                        <p>{{ message }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <input type="text" name="username" id="name" class="form-control" placeholder="Enter username">
+                                </div>
+                                <div class="d-flex">
+                                    <div class="mb-3 mr-3">
+                                        <input type="text" name="first_name" id="" class="form-control" placeholder="Enter First name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" name="last_name" id="" class="form-control" placeholder="Enter Last name">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" name="phone" id="phone" class="form-control" placeholder="Enter your phone number">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" name="department" id="department" class="form-control" placeholder="Department">
+                                </div>
+                                <div class="mb-3">
+                                    <select name="year-of-study" id="year-of-study" class="form-control">
+                                        <option value="">Year of Study</option>
+                                        <option value="1st Year">1st Year</option>
+                                        <option value="2nd Year">2nd Year</option>
+                                        <option value="3rd Year">3rd Year</option>
+                                        <option value="4th Year">4th Year</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+<style>
+    .fade-in {
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const elements = document.querySelectorAll('.fade-in');
+        elements.forEach(element => {
+            element.classList.add('fade-in');
+        });
+    });
+</script>

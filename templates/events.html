@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<section class="hero" id="home">
+    <h1>Build AI-Powered <span id="dynamic-text" class="gradient-text">Emails</span>, Manage All your Projects
+      in one Platform</h1>
+
+    <p>Unlock a suite of amazing features with intuitive tools...</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn start-building" onclick="getStarted()">Start Building</a>
+      <a href="#" class="btn watch-demo">Watch Demo</a>
+    </div>
+  </section>
+    <!-- Events Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h1 class="text-center mb-4">Upcoming Events</h1>
+            <div class="row g-4">
+                <!-- Event 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Event 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Annual Youth Conference</h5>
+                            <p class="card-text">Join us for an inspiring youth conference featuring life-changing messages, worship, and fellowship.</p>
+                            <p class="text-muted"><i class="bi bi-calendar-event"></i> Date: March 15, 2025</p>
+                            <p class="text-muted"><i class="bi bi-geo-alt"></i> Location: Main Auditorium</p>
+                            <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Event 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Leadership Training Workshop</h5>
+                            <p class="card-text">Enhance your leadership skills at our interactive workshop with experienced facilitators.</p>
+                            <p class="text-muted"><i class="bi bi-calendar-event"></i> Date: April 20, 2025</p>
+                            <p class="text-muted"><i class="bi bi-geo-alt"></i> Location: Training Hall</p>
+                            <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Event 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Community Outreach Program</h5>
+                            <p class="card-text">Be a part of our mission to serve the community with love and compassion.</p>
+                            <p class="text-muted"><i class="bi bi-calendar-event"></i> Date: May 10, 2025</p>
+                            <p class="text-muted"><i class="bi bi-geo-alt"></i> Location: City Square</p>
+                            <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

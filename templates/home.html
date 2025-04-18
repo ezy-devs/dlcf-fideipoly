@@ -1,0 +1,402 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+  <section class="hero" id="home">
+    <h1>Build AI-Powered <span id="dynamic-text" class="gradient-text">Emails</span>, Manage All your Projects
+      in one Platform</h1>
+
+    <p>Unlock a suite of amazing features with intuitive tools...</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn start-building" onclick="getStarted()">Start Building</a>
+      <a href="#" class="btn watch-demo">Watch Demo</a>
+    </div>
+  </section>
+  {% if messages %}
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    {% for message in messages %}
+      <div class="toast align-items-center text-bg-{{ message.tags }} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            {{ message }}
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+  {% endif %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+      var toastList = toastElList.map(function (toastEl) {
+        return new bootstrap.Toast(toastEl, { delay: 5000 });
+      });
+      toastList.forEach(toast => toast.show());
+    });
+  </script>
+  <section class="about-us py-5" style="background-color: rgb(23, 23, 63);">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 py-5">
+          <img src="{% static 'images/about-us.jpg' %}" alt="About Us" class="img-fluid rounded mx-w-12s">
+        </div>
+        <div class="col-md-6 text-primary">
+          <h2>About Us</h2>
+          <p>We are dedicated to providing top-notch services and solutions to our clients. Our team of experts works tirelessly to ensure that we meet and exceed your expectations.</p>
+        </div>
+      </div>
+
+      <div class="row align-items-center py-5">
+        <div class="col-md-6 order-md-2">
+          <img src="{% static 'images/mission.jpg' %}" alt="Mission" class="img-fluid rounded mx-w-12">
+        </div>
+        <div class="col-md-6 order-md-1">
+          <h2>Our Mission</h2>
+          <p class="animate-text">Our mission is to empower individuals and organizations through innovative solutions and exceptional service. We strive to make a positive impact in the communities we serve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+
+  <section class="events py-5 bg-blue">
+    <div class="container">
+      <h2 class="text-center">Upcoming Events</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <center>
+              <img src="{% static 'images/certificate verification system add cert.png' %}" alt="Event 1" class="card-img-top">
+            </center>
+            <div class="card-body">
+              <h5 class="card-title">Bible Study</h5>
+              <p class="card-text">Join us every Monday at 6 PM for a systematic and in-depth Bible study sessions.
+              </p>
+              <a href="events.html" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <center>
+              <img src="{% static 'images/certificate verification system Admin login.png' %}" alt="Event 1" class="card-img-top">
+            </center>
+            <div class="card-body">
+              <h5 class="card-title">Wednesday</h5>
+              <p class="card-text">Join us every Wednesday at 10 AM for a Change Life prayer sessions.</p>
+              <a href="events.html" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <center>
+              <img src="{% static 'images/codes.jpg' %}" alt="Event 1" class="card-img-top">
+            </center>
+            <div class="card-body">
+              <h5 class="card-title">Thursday</h5>
+              <p class="card-text">Join us every Thursday at 5 PM for Revival and Evangelism Training sessions.</p>
+              <a href="events.html" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <center>
+              <img src="{% static 'images/codes.jpg' %}" alt="Event 1" class="card-img-top">
+            </center>
+            <div class="card-body">
+              <h5 class="card-title">Sunday</h5>
+              <p class="card-text">Join us every Sunday at 8 AM for Sunday Worship Fellowship sessions.</p>
+              <a href="events.html" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .testimonial-card {
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        background: #f8f9fa;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        /* transition: transform 0.5s ease-in-out; */
+    }
+    .testimonial-card.card {
+      max-height: 230px;
+    }
+    .testimonial-card img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+    .testimony-container {
+        overflow: hidden;
+        position: relative;
+    }
+    .testimony-wrapper {
+        display: flex;
+        flex-direction: row;
+        /* transition: transform 1s ease-in-out; */
+    }
+    .testimonial-card, .leader-card {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease-in-out;
+        }
+        .testimonial-card img, .leader-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .testimony-container, .leadership-container {
+            overflow: hidden;
+            position: relative;
+        }
+        .testimony-wrapper, .leadership-wrapper {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+        .leader-card {
+            transition: transform 0.3s ease-in-out;
+        }
+        .leader-card:hover {
+            transform: scale(1.05);
+        }
+</style>
+
+<div class="container testimonies mt-5 mb-5">
+    <h2 class="text-center mb-4">Member Testimonies</h2>
+    <div class="testimony-container">
+        <div class="testimony-wrapper row row-cols-1 row-cols-md-4 g-4">
+            <div class="col">
+                <div class="testimonial-card p-3 card">
+                    <img src="{% static 'images/about-us.jpg' %}">
+                    <p>"God transformed my life through this community!"</p>
+                    <h6>- John Doe</h6>
+                </div>
+            </div>
+            <div class="col">
+                <div class="testimonial-card card p-3">
+                    <img src="{% static 'images/about-us.jpg' %}">
+                    <p>"I received a breakthrough after praying here!"</p>
+                    <h6>- Mary Jane</h6>
+                </div>
+            </div>
+            <div class="col">
+                <div class="testimonial-card card p-3">
+                    <img src="{% static 'images/about-us.jpg' %}">
+                    <p>"My family was restored through faith and prayers!"</p>
+                    <h6>- Samuel Peter</h6>
+                </div>
+            </div>
+            <div class="col">
+                <div class="testimonial-card card p-3">
+                    <img src="{% static 'images/about-us.jpg' %}">
+                    <p>"I found a new purpose in life!"</p>
+                    <h6>- Grace Ade</h6>
+                </div>
+            </div>
+            <div class="col">
+                <div class="testimonial-card card p-3">
+                    <img src="{% static 'images/about-us.jpg' %}">
+                    <p>"God's blessings have been abundant in my life!"</p>
+                    <h6>- Michael Obi</h6>
+                </div>
+            </div>
+            <div class="col">
+                <div class="testimonial-card card p-3">
+                    <img src="{% static 'images/about-us.jpg' %}">
+                    <p>"Miracles are real! I am a living testimony."</p>
+                    <h6>- Esther Olu</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
+  <h2 class="text-center mb-4">Leadership Team</h2>
+  <div class="row row-cols-1 row-cols-md-4 g-4 leadership-container">
+      <div class="col">
+          <div class="leader-card p-3">
+              <img src="https://via.placeholder.com/80" alt="Leader">
+              <h5>Pastor John Smith</h5>
+              <p>Senior Pastor & Mentor</p>
+          </div>
+      </div>
+      <div class="col">
+          <div class="leader-card p-3">
+              <img src="https://via.placeholder.com/80" alt="Leader">
+              <h5>Sarah Johnson</h5>
+              <p>Worship Leader</p>
+          </div>
+      </div>
+      <div class="col">
+          <div class="leader-card p-3">
+              <img src="https://via.placeholder.com/80" alt="Leader">
+              <h5>Michael Adams</h5>
+              <p>Youth Coordinator</p>
+          </div>
+      </div>
+      <div class="col">
+          <div class="leader-card p-3">
+              <img src="https://via.placeholder.com/80" alt="Leader">
+              <h5>Rachel Brown</h5>
+              <p>Community Outreach</p>
+          </div>
+      </div>
+  </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let index = 0;
+        const wrapper = document.querySelector(".testimony-wrapper");
+        const totalTestimonies = document.querySelectorAll(".testimony-wrapper .col").length;
+        const testimoniesPerSlide = 4;
+        const totalSlides = Math.ceil(totalTestimonies / testimoniesPerSlide);
+
+        function moveTestimonies() {
+            index = (index + 1) % totalSlides;
+            wrapper.style.transform = `translateY(-${index * 100}%)`;
+        }
+
+        setInterval(moveTestimonies, 3000);
+    });
+</script>
+<section class="news py-5">
+  <div class="container">
+    <h2 class="text-center">Latest News & Announcements</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">New Service Time</h5>
+            <p class="card-text">Starting next month, our Sunday service will begin at 9 AM instead of 8 AM.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Community Outreach</h5>
+            <p class="card-text">Join us for our community outreach program next Saturday at the town hall.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Holiday Celebration</h5>
+            <p class="card-text">We will be hosting a special holiday celebration event on December 24th.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="join-us py-5">
+  <div class="container">
+    <h2 class="text-center">Join Us</h2>
+    <p class="text-center">We welcome you to join our fellowship and participate in our activities. Here's how you can get involved:</p>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Attend Our Services</h5>
+            <p class="card-text">Join us for our weekly services and experience the presence of God. Check our events section for service times.</p>
+            <a href="events.html" class="btn btn-primary">View Events</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Volunteer</h5>
+            <p class="card-text">Become a volunteer and help us in our various programs and activities. Your support makes a difference.</p>
+            <a href="volunteer.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Join a Group</h5>
+            <p class="card-text">Connect with others by joining one of our small groups. Grow in faith and build lasting relationships.</p>
+            <a href="groups.html" class="btn btn-primary">Find a Group</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <div class="contact py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center">Get in Touch</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h5 class="text-left">Address</h5>
+          <p class="form-label">123 Opposite, Fidei Poly Main gate Gboko, Benue State</p>
+        </div>
+        <div class="col-md-6">
+          <form action="" method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" name="name" id="name" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" name="email" id="email" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea name="message" id="message" class="form-control" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+<style>
+  
+  @keyframes fade-in {
+    from {
+        margin-left: 0px;
+        transition: all 300ms ease-in;
+    }
+    to {
+        margin-left: 20px;
+        transition: all 300ms ease-in;
+    }
+  }
+
+  .animate-text{
+    animation-name: fade-in;
+    animation-duration: 05s;
+  }
+
+  
+</style>

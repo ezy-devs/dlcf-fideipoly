@@ -1,0 +1,21 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+<div class="main-content mt-5">
+    <h2 class="mb-4">Update Testimony - {{testimony.title}}</h2>
+    
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{form.as_p}}
+            </div>
+            <button type="submit" class="btn btn-primary" id="update-btn">Update</button>
+        </form>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

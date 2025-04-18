@@ -1,0 +1,30 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+<div class="main-content mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4>Testimony Details</h4>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{testimony.title}}</h5>
+            <p class="card-text">
+                {{testimony.content|linebreaksbr}}
+            </p>
+            <p class="text-muted">Submitted by: <strong>{{testimony.full_name}}</strong></p> 
+            <p class="text-muted">
+                Date: <strong>{{testimony.date}}</strong> 
+                Status: 
+                {% if testimony.is_approve%} 
+                    <small class="text-success fw-bold">Approved</small> 
+                {% else %} 
+                    <small class="text-warning fw-bold">Pending</small>
+                {% endif %}
+            </p>
+        </div>
+        <div class="card-footer text-end">
+            <a href="{% url 'testimonies_list' %}" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

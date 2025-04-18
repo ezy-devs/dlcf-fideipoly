@@ -1,0 +1,217 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+<div class="main-content">
+    <div>
+        <div class="d-flex justify-content-between">
+            <h2 class="">Users</h2>
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#createUserModal">
+                Add User
+            </button>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Admin status</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.is_superuser }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm edit-btn" data-toggle="modal"
+                            data-target="#editUserModal" 
+                            data-user-id="{{user.id}}"
+                            data-user-first-name="{{ user.first_name }}" 
+                            data-user-last-name="{{ user.last_name }}"
+                            data-user-email="{{ user.email }}" 
+                            data-user-phone="{{ user.phone }}"
+                            data-user-department="{{ user.department }}"
+                            data-user-year-of-study="{{ user.year_of_study }}"
+                            data-user-is-admin="{{ user.is_superuser }}">Edit</button>
+                        <a href="{% url 'delete_user' user.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        
+        <!-- edit user form -->
+        <div class="modal fade edit-btn" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editUserForm" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" id="user_id" name="user_id">
+                            <div class="form-group">
+                                <label for="first_name">First Name</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="text" class="form-control" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="department">Department</label>
+                                <input type="text" class="form-control" id="department" name="department" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="year_of_study">Year of Study</label>
+                                <input type="text" class="form-control" id="year_of_study" name="year_of_study"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="is_admin">Admin</label>
+                                <input type="text" class="form-control" id="is_admin" name="is_admin" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update User</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            // update user modal
+            $('.edit-btn').on('click', function () {
+                var button = $(event.relatedTarget);
+                var userId = $(this).data('user-id');
+                var userFirstName = $(this).data('user-first-name');
+                var userLastName = $(this).data('user-last-name');
+                var userEmail = $(this).data('user-email');
+                var userPhone = $(this).data('user-phone');
+                var userDepartment = $(this).data('user-department');
+                var userYearOfStudy = $(this).data('user-year-of-study');
+                var userIsAdmin = $(this).data('user-is-admin');
+
+                $('#editUserModal #first_name').val(userFirstName);
+                $('#editUserModal #last_name').val(userLastName);
+                $('#editUserModal #email').val(userEmail);
+                $('#editUserModal #phone').val(userPhone);
+                $('#editUserModal #department').val(userDepartment);
+                $('#editUserModal #year_of_study').val(userYearOfStudy);
+              
+            });
+        </script>
+        <!-- Create User Modal -->
+        <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createUserModalLabel">Add User</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="createUserForm" method="POST" action="{% url 'create_user' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="first_name">First Name</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="text" class="form-control" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="department">Department</label>
+                                <input type="text" class="form-control" id="department" name="department">
+                            </div>
+                            <div class="form-group">
+                                <label for="year_of_study">Year of Study</label>
+                                <input type="text" class="form-control" id="year_of_study" name="year_of_study">
+                            </div>
+                            <div class="form-group">
+                                <!-- admin checkbox -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="1" id="is_admin"
+                                        name="is_admin">
+                                    <label class="form-check-label" for="is_admin">
+                                        Admin
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add User</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // send the form data to the server
+    $('#createUserForm').submit(function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+        var formData = form.serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            success: function (data) {
+                if (data.status === 'error') {
+                    alert(data.message);
+                } else {
+                    $('#createUserModal').modal('hide');
+                    alert('User created successfully');
+                    location.reload();
+                }
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            }
+        });
+    });
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

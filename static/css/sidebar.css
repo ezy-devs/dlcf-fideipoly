@@ -1,0 +1,294 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #e0e0e0;
+}
+
+/* Sidebar */
+.sidebar {
+    height: 60px;
+    background-color: #eaf2f8;
+    color: #414;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    right: 0;
+    display: flex;
+}
+
+.height-left {
+    flex: 0.5;
+}
+
+/* .nav {
+    flex: 2.5;
+} */
+
+.header-right {
+    flex: 0.5;
+}
+
+/* Logo Section */
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+
+.nav {
+    display: flex;
+    flex: 2.5;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #414;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.nav-item:hover {
+    color: #00BFFF;
+    transition: 0.5s ease-in;
+}
+
+.nav-icon {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.nav-text {
+    font-size: 16px;
+}
+
+.brand.nav-item {
+    display: none;
+}
+
+.header-left h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Notification Icon */
+.notification {
+    position: relative;
+    cursor: pointer;
+}
+
+.notification .icon {
+    font-size: 20px;
+}
+
+.notification .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff4d4d;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-weight: bold;
+}
+
+/* User Profile */
+.user-profile {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-profile .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    transition: transform 0.2s ease;
+}
+
+.user-profile:hover .avatar {
+    transform: scale(1.1);
+}
+
+/* Dropdown Menu */
+.user-profile .dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #1e1e1e;
+    /* Dark background */
+    border: 1px solid #414;
+    /* Brand color */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+}
+
+.user-profile:hover .dropdown {
+    display: block;
+}
+
+.user-profile .dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user-profile .dropdown ul li {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.user-profile .dropdown ul li a {
+    text-decoration: none;
+    color: #e0e0e0;
+    /* Light text */
+    transition: color 0.3s ease;
+}
+
+.user-profile .dropdown ul li a:hover {
+    color: #fff;
+    background-color: #414;
+    display: block;
+}
+
+
+.card {
+    text-align: left;
+    flex: 1;
+    background-color: #1e1e1e;
+    border: 1px solid #414;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #e0e0e0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+
+.card img {
+    width: 40px;
+    height: 40px;
+}
+
+.card h3 {
+    font-size: 20px;
+    color: #555;
+}
+
+.card p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #c0c0c0;
+    margin-top: 10px;
+}
+
+
+section {
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav {
+        width: 230px;
+        height: 100%;
+        position: fixed;
+        top: 60px;
+        display: none;
+        flex-direction: column;
+        z-index: 100;
+        transition: 3000ms ease-in-out;
+        background-color: #eaf2f8;
+    }
+    .brand.nav-item {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    .brand {
+        display: none;
+    }
+
+    .action {
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 18px;
+        color: #414;
+        height: 40px;
+    }
+
+    .action.toggler .link {
+        padding: 2px;
+        background-color: #414;
+        margin-bottom: 5px;
+        border-radius: 5px;
+    }
+
+    .action.toggler .link:first-child,
+    .action.toggler .link:last-child {
+        width: 100%;
+    }
+
+    .action.toggler .link:nth-child(2) {
+        width: 70%;
+    }
+
+    #opennav {
+        display: block;
+        color: #414;
+    }
+
+    #opennav:hover,
+    #closebar:hover {
+        cursor: pointer;
+    }
+
+    #closebar {
+        display: none;
+    }
+}

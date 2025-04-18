@@ -1,0 +1,93 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for event in events %}
+{% endfor %}
+    <!-- Event Banner -->
+    <section class="bg-dark text-white py-5">
+        <div class="container text-center">
+            <h1 class="display-4">Annual Youth Conference</h1>
+            <p class="lead">Join us for an inspiring youth conference featuring life-changing messages, worship, and fellowship.</p>
+        </div>
+    </section>
+
+    <!-- Event Details -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="mb-4">Event Details</h2>
+                    <p>
+                        The Annual Youth Conference brings together young believers from all walks of life to worship, learn, and grow. 
+                        This event is packed with impactful teachings, inspiring worship sessions, and opportunities for networking and fellowship.
+                    </p>
+                    <h4 class="mt-4">Date & Time</h4>
+                    <p><i class="bi bi-calendar-event"></i> March 15, 2025 | <i class="bi bi-clock"></i> 9:00 AM - 5:00 PM</p>
+
+                    <h4 class="mt-4">Location</h4>
+                    <p><i class="bi bi-geo-alt"></i> Main Auditorium, DLCF Fellowship Center</p>
+
+                    <h4 class="mt-4">Event Highlights</h4>
+                    <ul>
+                        <li>Powerful Worship Sessions</li>
+                        <li>Life-Transforming Messages</li>
+                        <li>Interactive Workshops</li>
+                        <li>Networking Opportunities</li>
+                    </ul>
+                </div>
+                <!-- Event Image -->
+                <div class="col-md-4">
+                    <img src="https://via.placeholder.com/400x400" class="img-fluid rounded shadow" alt="Event Image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Event Schedule</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Time</th>
+                            <th>Activity</th>
+                            <th>Speaker</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>9:00 AM</td>
+                            <td>Opening Worship</td>
+                            <td>Choir Team</td>
+                        </tr>
+                        <tr>
+                            <td>10:00 AM</td>
+                            <td>Keynote Message</td>
+                            <td>Pastor John Doe</td>
+                        </tr>
+                        <tr>
+                            <td>12:00 PM</td>
+                            <td>Lunch Break</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>1:00 PM</td>
+                            <td>Interactive Workshop</td>
+                            <td>Leadership Panel</td>
+                        </tr>
+                        <tr>
+                            <td>4:00 PM</td>
+                            <td>Closing Worship</td>
+                            <td>Choir Team</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
