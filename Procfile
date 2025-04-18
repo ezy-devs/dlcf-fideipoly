@@ -1,1 +1,1 @@
-web: gunicorn dlcf_website.wsgi:application --log-file -
+web: gunicorn dlcf_portal.wsgi:application
