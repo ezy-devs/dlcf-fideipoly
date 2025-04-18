@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-vkvu6w@utvt-to!hdri(+khkex&y%sns19w_u1%q%2-fd8x%wl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dlcf-fideipoly.onrender.com']
 
 
 # Application definition
